@@ -1,0 +1,11 @@
+make strip
+
+strip ./bin/template
+gzip -9 ./man/template.1
+#gzip -9 ./doc/*
+gzip -9 ./ChangeLog
+gzip -9 ./LICENSE
+gzip -9 ./AUTHORS
+gzip -9 ./NEWS
+gzip -9 ./README
+
