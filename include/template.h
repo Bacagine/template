@@ -108,7 +108,7 @@ static const char *pszCmdArguments[] = {
   NULL,
   "file",
   "number",
-  "bool",
+  NULL,
   "file",
   NULL
 };
@@ -122,7 +122,7 @@ static const char *pszCmdMessages[] = {
   "Show the version and exit",
   "<file> is the path of the debug file",
   "<number> is the level of debug level",
-  "<bool> boolean values (0 or 1)",
+  "Set a colored log",
   "<file> is the path of the .conf file of software",
   NULL
 };
@@ -157,21 +157,6 @@ void vPrintUsage(void);
  * Print the version of the software
  */
 void vPrintVersion(void);
-
-/**
- * Check if a string is empty
- */
-bool bStrIsEmpty(const char *kpszStr);
-
-/**
- * Check if your terminal have support a colored text
- */
-bool bTerminalSupportColors(void);
-
-/**
- * Remove the '\n' character of a string
- */
-void vRemoveEnter(char *pszStr);
 
 /**
  * Print a formatted error message

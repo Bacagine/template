@@ -178,10 +178,6 @@ void vTraceEnvp(char **envp)
   vLogInfo(_("%s - end"), __func__);
 }
 
-/**
- * This function is based in the examples of the book 
- * "Aprenda em 24 horas Programacao para Linux"
- */
 char *szGetProgramName(const char *szPathName)
 {
   char *pszProgramName = 0;
