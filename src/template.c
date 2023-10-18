@@ -14,6 +14,7 @@
 #include "log/log.h"
 #include "cutils/cutils.h"
 #include "cutils/str.h"
+#include "cutils/color.h"
 #include "template.h"
 
 char gszConfFileName[LOG_FILE_NAME_LENGTH];
@@ -149,33 +150,33 @@ void vTraceCommandLine(int argc, char **argv)
 {
   int ii;
 
-  vLogInfo(_("%s - begin"), __func__);
+  vTraceBegin();
 
-  vLogTrace("argc == %d", argc);
+  vTraceAll("argc == %d", argc);
 
   for(ii = 0; ii < argc; ii++)
   {
-    vLogTrace("0x%08lX argv[%d] == %s", (long) &argv[ii], ii, argv[ii]);
+    vTraceAll("0x%08lX argv[%d] == %s", (long) &argv[ii], ii, argv[ii]);
   }
 
-  vLogInfo(_("%s - end"), __func__);
+  vTraceEnd();
 }
 
 void vTraceEnvp(char **envp)
 {
   int ii;
 
-  vLogInfo(_("%s - begin"), __func__);
+  vTraceBegin();
 
   if(envp != NULL)
   {
     for(ii = 0; envp[ii] != 0; ii++)
     {
-      vLogTrace("0x%08lX envp[%d] == %s", (long) &envp[ii], ii, envp[ii]);
+      vTraceAll("0x%08lX envp[%d] == %s", (long) &envp[ii], ii, envp[ii]);
     }
   }
 
-  vLogInfo(_("%s - end"), __func__);
+  vTraceEnd();
 }
 
 char *szGetProgramName(const char *szPathName)
@@ -215,22 +216,22 @@ void vTraceSystemInfo(void)
   time(&tCurrentDateTime);
   pstDateTime = localtime(&tCurrentDateTime);
 
-  vLogInfo(_("%s - begin"), __func__);
+  vTraceBegin();
  
   if(uname(&stSysInfo) != 0)
   {
-    vLogWarning(_("E: uname(&stSysInfo) != 0"));
+    vTraceWarning(_("E: uname(&stSysInfo) != 0"));
   }
 
   if(pstUserInfo == NULL)
   {
-    vLogWarning(_("pstUserInfo == NULL"));
+    vTraceWarning(_("pstUserInfo == NULL"));
   }
   
-  vLogTrace(_(" GETTING SYSTEM INFORMATION"));
-  vLogTrace(_("----------------------------"));
+  vTraceAll(_(" GETTING SYSTEM INFORMATION"));
+  vTraceAll(_("----------------------------"));
   
-  vLogTrace("Current date and time:"
+  vTraceAll("Current date and time:"
       " %02d/%02d/%04d %02d:%02d:%02d", pstDateTime->tm_mday,
                                         pstDateTime->tm_mon + 1,
                                         pstDateTime->tm_year + 1900,
@@ -239,45 +240,45 @@ void vTraceSystemInfo(void)
                                         pstDateTime->tm_sec
   );
   
-  vLogTrace(_(" OPERATING SYSTEM INFORMATION"));
-  vLogTrace(_("------------------------------"));
-  vLogTrace(_("Operating Systen........: %s"), stSysInfo.sysname);
-  vLogTrace(_("Host Name...............: %s"), stSysInfo.nodename);
-  vLogTrace(_("Kernel Version..........: %s"), stSysInfo.release);
-  vLogTrace(_("Operation System Version: %s"), stSysInfo.version);
-  vLogTrace(_("Architecture............: %s"), stSysInfo.machine);
-  vLogTrace(_("------------------------------"));
+  vTraceAll(_(" OPERATING SYSTEM INFORMATION"));
+  vTraceAll(_("------------------------------"));
+  vTraceAll(_("Operating Systen........: %s"), stSysInfo.sysname);
+  vTraceAll(_("Host Name...............: %s"), stSysInfo.nodename);
+  vTraceAll(_("Kernel Version..........: %s"), stSysInfo.release);
+  vTraceAll(_("Operation System Version: %s"), stSysInfo.version);
+  vTraceAll(_("Architecture............: %s"), stSysInfo.machine);
+  vTraceAll(_("------------------------------"));
 
-  vLogTrace(_(" USER SYSTEM INFORMATION"));
-  vLogTrace(_("-------------------------"));
-  vLogTrace(_("UID.....................: %u"), pstUserInfo->pw_uid);
-  vLogTrace(_("GID.....................: %u"), pstUserInfo->pw_gid);
-  vLogTrace(_("User Name...............: %s"), pstUserInfo->pw_name);
-  vLogTrace(_("Full Name...............: %s"), pstUserInfo->pw_gecos);
-  vLogTrace(_("Home Directory..........: %s"), pstUserInfo->pw_dir);
-  vLogTrace(_("Default Shell...........: %s"), pstUserInfo->pw_shell);
-  vLogTrace(_("-------------------------"));
+  vTraceAll(_(" USER SYSTEM INFORMATION"));
+  vTraceAll(_("-------------------------"));
+  vTraceAll(_("UID.....................: %u"), pstUserInfo->pw_uid);
+  vTraceAll(_("GID.....................: %u"), pstUserInfo->pw_gid);
+  vTraceAll(_("User Name...............: %s"), pstUserInfo->pw_name);
+  vTraceAll(_("Full Name...............: %s"), pstUserInfo->pw_gecos);
+  vTraceAll(_("Home Directory..........: %s"), pstUserInfo->pw_dir);
+  vTraceAll(_("Default Shell...........: %s"), pstUserInfo->pw_shell);
+  vTraceAll(_("-------------------------"));
   
-  vLogInfo(_("%s - end"), __func__);
+  vTraceEnd();
 }
 
 void vTraceProgramInfo(void)
 {
-  vLogTrace(_("%s - begin"), __func__);
+  vTraceAll(_("%s - begin"), __func__);
   
-  vLogTrace(_(" PROGRAM INFORMATION"));
-  vLogTrace(_("---------------------"));
-  vLogTrace(_("Software..........: %s"),    kpszProgramName);
-  vLogTrace(_("Version...........: %s"),    VERSION);
-  vLogTrace(_("Copyright.........: %s"),    COPYRIGHT);
-  vLogTrace(_("Configuration file: %s"),    CONF_FILE_NAME);
-  vLogTrace(_("Log file..........: %s"),    LOG_FILE_NAME);
-  vLogTrace(_("Build in..........: %s %s"), __DATE__, __TIME__);
-  vLogTrace(_("Report bugs to....: <%s>"),  DEV_MAIL);
-  vLogTrace(_("Github............: %s"),    GITHUB_URL);
-  vLogTrace(_("---------------------"));
+  vTraceAll(_(" PROGRAM INFORMATION"));
+  vTraceAll(_("---------------------"));
+  vTraceAll(_("Software..........: %s"),    kpszProgramName);
+  vTraceAll(_("Version...........: %s"),    VERSION);
+  vTraceAll(_("Copyright.........: %s"),    COPYRIGHT);
+  vTraceAll(_("Configuration file: %s"),    CONF_FILE_NAME);
+  vTraceAll(_("Log file..........: %s"),    LOG_FILE_NAME);
+  vTraceAll(_("Build in..........: %s %s"), __DATE__, __TIME__);
+  vTraceAll(_("Report bugs to....: <%s>"),  DEV_MAIL);
+  vTraceAll(_("Github............: %s"),    GITHUB_URL);
+  vTraceAll(_("---------------------"));
 
-  vLogTrace(_("%s - end"), __func__);
+  vTraceAll(_("%s - end"), __func__);
 }
 
 /******************************************************************************
@@ -301,6 +302,8 @@ int main(int argc, char **argv)
   UNUSED(kszLogLevelColorInit);
   UNUSED(kszLogLevelColorEnd);
   UNUSED(kszLogLevel);
+  UNUSED(kszBoldColors);
+  UNUSED(kszNormalColors);
   
   setlocale(LC_ALL, NULL);
   
@@ -350,12 +353,12 @@ int main(int argc, char **argv)
     vSetLogFileName(LOG_FILE_NAME);
   }
 
-  if(INFO_LEVEL)
+  if(INFO_LOG_LEVEL)
   {
-    vLogInfo(_("%s - begin"), __func__);
+    vTraceBegin();
   }
 
-  if(TRACE_LEVEL)
+  if(TRACE_LOG_LEVEL)
   {
     vTraceCommandLine(argc, argv);
     vTraceProgramInfo();
@@ -367,9 +370,9 @@ int main(int argc, char **argv)
    * TODO: The rest of the code should go here.
    */
 
-  if(INFO_LEVEL)
+  if(INFO_LOG_LEVEL)
   {
-    vLogInfo(_("%s end iRsl == %d"), __func__, iRsl);
+    vTraceInfo(_("%s end iRsl == %d"), __func__, iRsl);
   }
 
   return iRsl;
