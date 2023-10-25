@@ -9,7 +9,7 @@
 # Checking if user is root
 if [[ $EUID -ne 0 ]]; then
   # Checking if the terminal suport colored text
-  if [[ test -n $(tput colors) && test $(tput colors) -ge 8]]; then
+  if test -n $(tput colors) && test $(tput colors) -ge 8; then
     printf "\033[1;31mE:\033[m This script must be run as root\n"
   fi
   
@@ -38,11 +38,11 @@ if test -f /usr/bin/template; then
   cp -rvf /usr/share/doc/template
 
   printf "\ntemplate was uninstalled successfuly!\n"
-elif
+else
   # Checking if the terminal suport colored text
-  if [[ test -n $(tput colors) && test $(tput colors) -ge 8]]; then
+  if test -n $(tput colors) && test $(tput colors) -ge 8; then
     printf "\033[1;31mE:\033[m template is not installed!\n"
-  elif
+  else
     printf "E: template is not installed!\n"
   fi
 

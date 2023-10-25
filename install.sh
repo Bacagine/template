@@ -9,11 +9,11 @@
 # Checking if user is root
 if [[ $EUID -ne 0 ]]; then
   # Checking if the terminal suport colored text
-  if [[ test -n $(tput colors) && test $(tput colors) -ge 8]]; then
+  if test -n $(tput colors) && test $(tput colors) -ge 8; then
     printf "\033[1;31mE:\033[m This script must be run as root\n"
+  else
+    printf "E: This script must be run as root\n"
   fi
-  
-  print "E: This script must be run as root\n"
 
   exit 1
 fi
@@ -40,5 +40,5 @@ cp -rvf ./AUTHORS.gz /usr/share/doc/template
 cp -rvf ./NEWS.gz /usr/share/doc/template
 cp -rvf ./README.gz /usr/share/doc/template
 
-printf "template was installed successfuly!"
+printf "template was installed successfuly!\n"
 
