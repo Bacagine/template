@@ -125,12 +125,12 @@ int main(int argc, char **argv)
     vSetLogFileName(LOG_FILE_NAME);
   }
 
-  if(INFO_LOG_DETAILS)
+  if(INFO_DETAILS)
   {
     vTraceBegin();
   }
 
-  if(TRACE_LOG_DETAILS)
+  if(TRACE_DETAILS)
   {
     vTraceCommandLine(argc, argv);
     vTraceProgramInfo();
@@ -142,7 +142,7 @@ int main(int argc, char **argv)
    * TODO: The rest of the code should go here.
    */
 
-  if(INFO_LOG_DETAILS)
+  if(INFO_DETAILS)
   {
     vTraceInfo(_("%s end iRsl == %d"), __func__, iRsl);
   }
