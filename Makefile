@@ -11,7 +11,7 @@ TARGET       = template
 # Directories
 SRCDIR       = src
 INCDIR       = include
-INCLOGDIR    = include/log
+INCLOGDIR    = include/trace
 INCCUTILS    = include/cutils
 OBJDIR       = obj
 LIBDIR       = lib
@@ -31,7 +31,7 @@ OBJ        = $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SRC))
 
 # Compilation flags
 LDFLAGS      = -L $(LIBDIR)
-LDLIBS       = -lm -pthread -llog -lcutils
+LDLIBS       = -lm -pthread -ltrace -lcutils
 CFLAGS       = -I $(INCDIR) -I $(INCLOGDIR) -I $(INCCUTILS) -Wall -Wextra 
 DEBUGFLAGS   = -g -O0 -DDEBUG_COMPILATION
 

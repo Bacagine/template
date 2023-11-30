@@ -29,7 +29,7 @@
 #include <sys/utsname.h>
 #include <unistd.h>
 #include <pwd.h>
-#include "log/log.h"
+#include "trace/trace.h"
 
 /******************************************************************************
  *                                                                            *

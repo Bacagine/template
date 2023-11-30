@@ -19,7 +19,7 @@
 #include <stdio.h>
 #include <getopt.h>
 #include "template.h"
-#include "log.h"
+#include "trace.h"
 #include "cutils/cutils.h"
 
 /******************************************************************************

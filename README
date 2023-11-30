@@ -58,7 +58,6 @@ mkdistclean.......: make distclean script
 mkinstall.........: make install script
 mktest............: make test script
 mkuninstall.......: make uninstall script
-remove_logs.sh....: script to remove all .log files in current directory
 template.c........: C source file of the library
 template.conf.....: A .conf example file to use the log library in your C programs
 uninstall.sh......: Uninstall script of the software

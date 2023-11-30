@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
-#include "log/log.h"
+#include "trace/trace.h"
 #include "cutils/cutils.h"
 #include "cutils/str.h"
 #include "cutils/color.h"
