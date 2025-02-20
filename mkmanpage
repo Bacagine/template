@@ -1,0 +1,1 @@
+help2man ./bin/template > man/template.1

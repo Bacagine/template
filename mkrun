@@ -1,0 +1,6 @@
+# Dynamic Library PATH Configuration
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:./lib"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:./"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:./lib/mysql"
+
+make run LINUX=1
